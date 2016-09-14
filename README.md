@@ -42,3 +42,4 @@ Two files are associated with this submission:
 
 1. run_analysis.R : The R script that processes the original data into a tidy dataset and then outputs a summarized table.
 2. TableOfMeansByActivityAndSubject_Week4_Assignment.txt : The output .txt file containing the summarized table.
+...
