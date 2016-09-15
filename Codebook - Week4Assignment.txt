@@ -1,0 +1,211 @@
+—————————————————————————————
+Getting & Cleaning Data - Week 4 Assignment - Codebook
+—————————————————————————————
+JeBronlLames
+—————————————————————————————
+—————————————————————————————
+—————————————————————————————
+
+The function of this code is to tidy and summarize data from a number of files, outputting one concise summary of the mean of each observed measurement of each variable, for each activity and each subject.
+
+—————————————————————————————
+—————————————————————————————
+Details - Original data (raw data to me)
+
+* See full details in original file package at  "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip” *
+- Pre-processed
+- “Subject“ values range from 1 to 30.
+- “Activity” values include 6 movements
+	1 Walking
+	2 Walking up stairs
+	3 Walking down stairs
+	4 Sitting
+	5 Standing
+	6 Laying
+- Observations are measurements from accelerometer and gyroscope 3-axial raw signals `tAcc-XYZ` and `tGyro-XYZ`
+-Two datasets are included
+	1 Testing Data consisting of data from only a small group of the 30 participants, and having a fewer number of observations
+	2 Training Data consisting of data from the 30 participants, having the larger number of observations.
+- Of the 561 variables, some are calculated values on measurements
+	The set of variables that were estimated from these signals are: 
+
+(From original file, “features_info.txt”)
+
+mean(): Mean value
+std(): Standard deviation
+mad(): Median absolute deviation 
+max(): Largest value in array
+min(): Smallest value in array
+sma(): Signal magnitude area
+energy(): Energy measure. Sum of the squares divided by the number of values. 
+iqr(): Interquartile range 
+entropy(): Signal entropy
+arCoeff(): Autorregresion coefficients with Burg order equal to 4
+correlation(): correlation coefficient between two signals
+maxInds(): index of the frequency component with largest magnitude
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+skewness(): skewness of the frequency domain signal 
+kurtosis(): kurtosis of the frequency domain signal 
+bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+angle(): Angle between to vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
+
+——————————————————————————————————————————————————————————
+——————————————————————————————————————————————————————————
+——————————————————————————————————————————————————————————
+——————————————————————————————————————————————————————————
+
+MY ANALYSIS: Outline of Operations:
+
+1. Read in data (::downloader)
+2. Create 2 initial working data tables (tbl_df format for ::dtplyr)
+3. Naming the columns from the “features” information provided in the original file package
+4. Indexing and removing duplicate column names
+5. Selecting columns for: 
+
+			1a) mean(), 
+			1b) meanFreq() —included simply because it is also a mean calculation along with the other primary calculations listed above
+			2) std() 
+
+		*** Additional calculations on the angle() variable were not included as they were not explicitly specified in the instructions ***
+			gravityMean
+			tBodyAccMean
+			tBodyAccJerkMean
+			tBodyGyroMean
+			tBodyGyroJerkMean
+		***************************************************************************************************************************************************************
+
+6. Modifying a numeric string to produce a character string corresponding to the activity names (to be later added as a column to the two working tables)
+7. Adding the character vectors describing the activities as a column to the two working tables
+8. Adding the subject numeric vectors as a column to the two working tables
+9. Merging the two working tables (training and testing data sets) by binding the rows of the smaller testing data set under those rows of the larger training data set
+10. Grouping the merged dataset by activity and subject
+11. Summarizing the mean of each variable for each activity and each subject
+12. Writing this output summary table to a .txt file for submission
+
+
+——————————————————————————————————————————————————————————
+
+1. Read in data (::downloader):
+	
+Objects:			site = url for original data
+				train_s = stores path for subject_train.txt
+				train_X = stores path for X_train.txt
+     				train_Y = stores path for y_train.txt
+      				test_s = stores path for subject_test.txt
+      				test_X = stores path for X_test.tx"
+      				test_Y = stores path for y_test.txt
+
+Functions:			download()
+				unzip()
+
+——————————————————————————————————————————————————————————
+	
+2. Create 2 initial working data tables (tbl_df format for ::dtplyr):
+&&
+3. Naming the columns from the “features” information provided in the original file package
+
+Objects:			features = path to features.txt
+				feat = table of features to be used to column names of variables in working tables
+				f = subset of table containing one column of feature names
+    				trs = table of training subject values
+      				trx = table of all training observations and included column names from `f`
+      				try = table of activity values
+      				tes = table of testing subject values
+      				tex = table of all testing observations and included column names from `f`
+      				tey = table of activity values
+
+Functions:			read.table()
+				
+——————————————————————————————————————————————————————————
+	
+4. Indexing and removing duplicate column names
+
+Objects:			ind = index for duplicated column names, values in `f` vector
+				train_x_unique_vars = selects subset of columns having unique variable names for training working table
+				test_x_unique_vars = selects subset of columns having unique variable names for testing working table
+
+Functions:			duplicated()
+				which()
+				tbl_dt()
+				
+——————————————————————————————————————————————————————————
+
+5. Selecting columns for mean(), meanFreq(), and std() calculations
+
+Objects:			train_x_mean_std = selects only those columns containing the mean(), meanFreq(), and std() calculations from the training data set
+				test_x_mean_std = selects only those columns containing the mean(), meanFreq(), and std() calculations from the testing data set
+
+Functions:			select()
+				contains()
+——————————————————————————————————————————————————————————
+
+6. Modifying a numeric string to produce a character string corresponding to the activity names 
+
+Objects:			activity = path to activity_labels.txt
+				act = table of activity values
+
+Subsetting:			try[] = replacing numeric values 1:6 with character values corresponding to descriptive activity names for the training data set
+				tey[] = replacing numeric values 1:6 with character values corresponding to descriptive activity names for the testing data set
+
+——————————————————————————————————————————————————————————
+
+7. Adding the character vectors describing the activities as a column to the two working tables
+
+Objects:			train_x_ms_act = adds a column for the character vector of activity names to the training data set
+				test_x_ms_act = adds a column for the character vector of activity names to the testing data set
+
+Functions:			mutate()
+
+——————————————————————————————————————————————————————————
+
+8. Adding the subject numeric vectors as a column to the two working tables
+
+Objects:			train_x_ms_act_sub = adds a column for the numeric vector of subject identifiers to the training data set
+				test_x_ms_act_sub = adds a column for the numeric vector of subject identifiers to the testing data set
+
+Functions:			mutate()
+
+——————————————————————————————————————————————————————————
+
+9. Merging the two working tables (training and testing data sets) by binding the rows of the smaller testing data set under those rows of the larger training data set
+
+Objects:			step4_DATA_MERGED = binds the rows of the smaller testing data set below the rows of the larger training data set, creating one complete data set
+				step4_output = step4_DATA_MERGED (for simpler spotting by anyone looking through the code to match the steps layed out in the instructions)
+
+Functions:			bind_rows()
+
+——————————————————————————————————————————————————————————
+
+10. Grouping the merged dataset by activity and subject
+
+Objects:			step5_DATA_MERGED_GROUPED = groups the complete data set by activity then by subject
+
+Functions:			group_by()
+
+——————————————————————————————————————————————————————————
+
+11. Summarizing the mean of each variable for each activity and each subject
+
+Objects:			step5_DATA_MEAN = summarizes the complete data set by calculating the mean of each variable, for each activity, and for each subject
+				step5_output = arranges step5_DATA_MEAN by activity then by subject
+				
+Functions:			summarise()
+				arrange()
+
+——————————————————————————————————————————————————————————
+12. Writing this output summary table to a .txt file for submission
+
+Functions:			print()
+
+
+
+
+
