@@ -85,7 +85,7 @@ library("dtplyr") ## data.table + dplyr code now lives in "dtplyr" package. Plea
       step5_DATA_MERGED_GROUPED <- group_by(step4_DATA_MERGED, activity, subject) 
       
       ## TAKING THE MEAN OF EACH VARIABLE FOR EACH ACTIVITY AND SUBJECT
-      step5_DATA_MEAN <- summarise(step5_DATA_MERGED_GROUPED, mean)
+      step5_DATA_MEAN <- summarise_each(step5_DATA_MERGED_GROUPED, funs(mean))
       step5_output <- arrange(step5_DATA_MEAN, activity, subject)
       ## Printing the outputs of steps 4 and 5
       print(step4_output)
