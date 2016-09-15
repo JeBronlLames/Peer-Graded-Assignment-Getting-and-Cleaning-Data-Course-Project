@@ -202,7 +202,7 @@ Functions:			group_by()
 Objects:			step5_DATA_MEAN = summarizes the complete data set by calculating the mean of each variable, for each activity, and for each subject
 				step5_output = arranges step5_DATA_MEAN by activity then by subject
 				
-Functions:			summarise()
+Functions:			summarise_each()
 				arrange()
 
 ——————————————————————————————————————————————————————————
