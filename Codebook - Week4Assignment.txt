@@ -1,21 +1,26 @@
-—————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 Getting & Cleaning Data - Week 4 Assignment - Codebook
-—————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 JeBronlLames
-—————————————————————————————
-—————————————————————————————
-—————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 The function of this code is to tidy and summarize data from a number of files, outputting one concise summary of the mean of each observed measurement of each variable, for each activity and each subject.
 
-—————————————————————————————
-—————————————————————————————
+*** The UNITS of the data are identical to those of the original data, as there were no conversions performed in run_analysis.R
+**** Keep in mind that the data was normalised by the original authors, meaning that the data that was made available to me 
+	was already unitless...
+***** The procedure followed is located here "https://thoughtfulbloke.wordpress.com/2015/09/09/getting-and-cleaning-the-assignment/"
+	which is a step by step guide, and to which I adhered strictly to produce my script, and the resulting output.
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 Details - Original data (raw data to me)
 
-* See full details in original file package at  "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip” *
+* See full details in original file package at  "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zipâ€ *
 - Pre-processed
-- “Subject“ values range from 1 to 30.
-- “Activity” values include 6 movements
+- â€œSubjectâ€œ values range from 1 to 30.
+- â€œActivityâ€ values include 6 movements
 	1 Walking
 	2 Walking up stairs
 	3 Walking down stairs
@@ -29,7 +34,7 @@ Details - Original data (raw data to me)
 - Of the 561 variables, some are calculated values on measurements
 	The set of variables that were estimated from these signals are: 
 
-(From original file, “features_info.txt”)
+(From original file, â€œfeatures_info.txtâ€)
 
 mean(): Mean value
 std(): Standard deviation
@@ -57,21 +62,21 @@ tBodyAccJerkMean
 tBodyGyroMean
 tBodyGyroJerkMean
 
-——————————————————————————————————————————————————————————
-——————————————————————————————————————————————————————————
-——————————————————————————————————————————————————————————
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 MY ANALYSIS: Outline of Operations:
 
 1. Read in data (::downloader)
 2. Create 2 initial working data tables (tbl_df format for ::dtplyr)
-3. Naming the columns from the “features” information provided in the original file package
+3. Naming the columns from the â€œfeaturesâ€ information provided in the original file package
 4. Indexing and removing duplicate column names
 5. Selecting columns for: 
 
 			1a) mean(), 
-			1b) meanFreq() —included simply because it is also a mean calculation along with the other primary calculations listed above
+			1b) meanFreq() â€”included simply because it is also a mean calculation along with the other primary calculations listed above
 			2) std() 
 
 		*** Additional calculations on the angle() variable were not included as they were not explicitly specified in the instructions ***
@@ -91,7 +96,7 @@ MY ANALYSIS: Outline of Operations:
 12. Writing this output summary table to a .txt file for submission
 
 
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 1. Read in data (::downloader):
 	
@@ -106,11 +111,11 @@ Objects:			site = url for original data
 Functions:			download()
 				unzip()
 
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 	
 2. Create 2 initial working data tables (tbl_df format for ::dtplyr):
 &&
-3. Naming the columns from the “features” information provided in the original file package
+3. Naming the columns from the â€œfeaturesâ€ information provided in the original file package
 
 Objects:			features = path to features.txt
 				feat = table of features to be used to column names of variables in working tables
@@ -124,7 +129,7 @@ Objects:			features = path to features.txt
 
 Functions:			read.table()
 				
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 	
 4. Indexing and removing duplicate column names
 
@@ -136,7 +141,7 @@ Functions:			duplicated()
 				which()
 				tbl_dt()
 				
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 5. Selecting columns for mean(), meanFreq(), and std() calculations
 
@@ -145,7 +150,7 @@ Objects:			train_x_mean_std = selects only those columns containing the mean(), 
 
 Functions:			select()
 				contains()
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 6. Modifying a numeric string to produce a character string corresponding to the activity names 
 
@@ -155,7 +160,7 @@ Objects:			activity = path to activity_labels.txt
 Subsetting:			try[] = replacing numeric values 1:6 with character values corresponding to descriptive activity names for the training data set
 				tey[] = replacing numeric values 1:6 with character values corresponding to descriptive activity names for the testing data set
 
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 7. Adding the character vectors describing the activities as a column to the two working tables
 
@@ -164,7 +169,7 @@ Objects:			train_x_ms_act = adds a column for the character vector of activity n
 
 Functions:			mutate()
 
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 8. Adding the subject numeric vectors as a column to the two working tables
 
@@ -173,7 +178,7 @@ Objects:			train_x_ms_act_sub = adds a column for the numeric vector of subject 
 
 Functions:			mutate()
 
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 9. Merging the two working tables (training and testing data sets) by binding the rows of the smaller testing data set under those rows of the larger training data set
 
@@ -182,7 +187,7 @@ Objects:			step4_DATA_MERGED = binds the rows of the smaller testing data set be
 
 Functions:			bind_rows()
 
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 10. Grouping the merged dataset by activity and subject
 
@@ -190,7 +195,7 @@ Objects:			step5_DATA_MERGED_GROUPED = groups the complete data set by activity 
 
 Functions:			group_by()
 
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 11. Summarizing the mean of each variable for each activity and each subject
 
@@ -200,7 +205,7 @@ Objects:			step5_DATA_MEAN = summarizes the complete data set by calculating the
 Functions:			summarise()
 				arrange()
 
-——————————————————————————————————————————————————————————
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 12. Writing this output summary table to a .txt file for submission
 
 Functions:			print()
