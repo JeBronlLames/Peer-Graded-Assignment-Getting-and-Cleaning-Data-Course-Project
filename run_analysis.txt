@@ -94,6 +94,6 @@ library("dtplyr") ## data.table + dplyr code now lives in "dtplyr" package. Plea
       
       ## Writing the step 5 output to a .csv file
       
-      
+      write.table(step5_output, "./TableOfMeansByActivityAndSubject_Week4_Assignment.txt", row.names = FALSE)
       
       ###### THIS COMPLETES THE ASSIGNMENT ######
